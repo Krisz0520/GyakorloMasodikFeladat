@@ -4,6 +4,13 @@
     {
         static int[] elemek = new int[10];
         static Random r = new Random();
+        static void Kiiro()
+        {
+            foreach (var item in elemek)
+            {
+                Console.WriteLine(item);
+            }
+        }
         static void Feltolto(int mini,  int maxi)
         {
             int randomom;
@@ -53,7 +60,26 @@
                 Console.WriteLine(item);
             }
         }
-
+        static void AtlagAlattiDuplazas()
+        {
+            int sum = 0;
+            for (int i = 0; i < elemek.Length; i++)
+            {
+                sum += elemek[i];
+            }
+            double sumdb = Convert.ToDouble(sum);
+            double avg = sumdb / elemek.Length;
+            int avgint = Convert.ToInt32(Math.Floor(avg));
+            for (int i = 0; i < elemek.Length; i++)
+            {
+                if (elemek[i] <= avgint)
+                {
+                    elemek[i]*=2;
+                }
+                
+                
+            }
+        }
 
 
         static void Main(string[] args)
@@ -68,11 +94,12 @@
                 maxi = Convert.ToInt32(Console.ReadLine()!);
             } while (mini + 9 > maxi);
             Feltolto(mini, maxi);
-            foreach (var item in elemek)
-            {
-                Console.WriteLine(item);
-            }
+            Kiiro();
             LeghosszabNovekvo();
+            AtlagAlattiDuplazas();
+            Console.WriteLine("---");
+            Kiiro();
+            
 
         }
     }
